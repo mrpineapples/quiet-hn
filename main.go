@@ -34,15 +34,15 @@ func main() {
 func handler(numStories int, tpl *template.Template) http.HandlerFunc {
 	sc := storyCache{
 		numStories: numStories,
-		duration:   6 * time.Second,
+		duration:   5 * time.Minute,
 	}
 
 	go func() {
-		ticker := time.NewTicker(3 * time.Second)
+		ticker := time.NewTicker(4 * time.Minute)
 		for {
 			temp := storyCache{
 				numStories: numStories,
-				duration:   6 * time.Second,
+				duration:   5 * time.Minute,
 			}
 			temp.stories()
 			sc.mutex.Lock()
